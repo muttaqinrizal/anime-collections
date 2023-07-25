@@ -25,13 +25,13 @@ type AnimeListData = {
   };
 };
 
-type AnimeListVariables = {
+type AnimeListParameter = {
   page: number,
   perPage: number,
   search?: string,
 };
 
-export function createVariables(page: number, search: string): AnimeListVariables {
+export function createParameter(page: number, search: string): AnimeListParameter {
   if (search === '') {
     return {
       page,
@@ -46,7 +46,7 @@ export function createVariables(page: number, search: string): AnimeListVariable
   }
 }
 
-export const GET_ANIME_LIST: TypedDocumentNode<AnimeListData, AnimeListVariables> = gql(`
+export const GET_ANIME_LIST: TypedDocumentNode<AnimeListData, AnimeListParameter> = gql(`
   query ($page: Int!, $perPage: Int!, $search: String) {
     Page (page: $page, perPage: $perPage) {
       pageInfo {
